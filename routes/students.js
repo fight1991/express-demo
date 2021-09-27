@@ -3,7 +3,7 @@ var router = express.Router();
 const studentsController = require('../controllers/students');
 
 // 获取用户信息
-router.post('/student/add', studentsController.insertStudent);
-
+router.get('/getInfo', studentsController.queryStudents);
+router.post('/add', studentsController.insertStudent);
 
 module.exports = router;

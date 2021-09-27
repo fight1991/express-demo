@@ -31,9 +31,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-//user路径下的所有请求到派发到userRouter中处理
-app.use('/users', usersRouter);
-app.use('/students', studentRouter)
+//user路径下的所有请求到派发到userRouter中处理(一级路径+子路径)
+app.use('/user', usersRouter);
+app.use('/student', studentRouter)
 
 //  捕捉404错误 catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -63,10 +63,11 @@ app.use(function(req, res, next) {
 const _errorHandler = (err, req, res, next) => {
   logger.error(`${req.method} ${req.originalUrl} ` + err.message)
   const errorMsg = err.message
-  res.status(err.status || 500).json({
+  const status = err.status || 500
+  res.status(status).json({
     code: -1,
     success: false,
-    message: errorMsg,
+    message: status + '-' + errorMsg,
     data: {}
   })
 }

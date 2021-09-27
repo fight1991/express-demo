@@ -2,8 +2,7 @@ const Base = require('./base');
 
 class Students extends Base {
   constructor() {
-    super('students')
+    super('students');
   }
 }
-
-module.exports = Students;
+module.exports = new Students();
