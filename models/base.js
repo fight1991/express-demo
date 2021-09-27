@@ -1,5 +1,6 @@
 const knex = require('../models/knex');
 
+// 声明一个基本类
 class Base{
   constructor(props){
     this.table = props;

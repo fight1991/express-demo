@@ -7,12 +7,12 @@ const userController = {
     try{
       let userData = await User.all()
       res.json({
-        code: 200,
+        code: '0000',
         message: "操作成功",
         data: userData
       })
     }catch(e){
-      res.json({ code: 0, message: "操作失败", data: e })
+      res.json({ code: '0001', message: "操作失败", data: e })
     }
   },
 }

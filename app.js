@@ -10,7 +10,7 @@ const logger = require('./logger')
 // 路由文件引用
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-
+const studentRouter = require('./routes/students');
 // Express 引用实例化
 const app = express();
 
@@ -31,7 +31,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+//user路径下的所有请求到派发到userRouter中处理
 app.use('/users', usersRouter);
+app.use('/students', studentRouter)
 
 //  捕捉404错误 catch 404 and forward to error handler
 app.use(function(req, res, next) {
