@@ -13,8 +13,6 @@ class Base{
 
   // 新增
   insert (params){
-    console.log('-------------------------------')
-    console.log(params)
     return knex(this.table).insert(params);
   }
 
