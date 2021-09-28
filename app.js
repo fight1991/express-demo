@@ -1,6 +1,7 @@
 // 各个依赖包
 const createError = require('http-errors');
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 // const logger = require('morgan'); // 修改变量名
@@ -21,7 +22,6 @@ app.set('view engine', 'jade');
 // 使用 morgan 打印日志
 // app.use(logger('dev'));
 app.use(morgan('dev'));
-
 // 使用对 Post 来的数据 json 格式化
 app.use(express.json());
 
@@ -30,6 +30,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// 处理跨域问题
+app.use(cors());
 app.use('/', indexRouter);
 //user路径下的所有请求到派发到userRouter中处理(一级路径+子路径)
 app.use('/user', usersRouter);
