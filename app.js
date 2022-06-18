@@ -11,8 +11,9 @@ const logger = require('./logger')
 
 // 路由文件引用
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const studentRouter = require('./routes/students');
+const loginRouter = require('./routes/login');
+const userRouter = require('./routes/users');
+
 // Express 引用实例化
 const app = express();
 
@@ -34,8 +35,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 app.use('/', indexRouter);
 //user路径下的所有请求到派发到userRouter中处理(一级路径+子路径)
-app.use('/user', usersRouter);
-app.use('/student', studentRouter)
+app.use('/login', loginRouter);
+app.use('/staff', userRouter);
+
 
 //  捕捉404错误 catch 404 and forward to error handler
 app.use(function(req, res, next) {

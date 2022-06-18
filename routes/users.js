@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
-const userController = require('../controllers/user');
+const userController = require('../controllers/users');
 
-/* GET users listing. */
-// 获取用户信息
-router.get('/userInfo', userController.showUser);
+// 获取员工列表
+router.post('/staff', userController.queryUsers);
 
 module.exports = router;
