@@ -4,6 +4,7 @@ const Admin = require('../models/admin_table.js');
 const adminController = {
   login: async function(req,res,next){
     try{
+      console.log(req);
       let reqData = req.body;
       let userData = await Admin.all();
       if (userData.sNo == reqData.account && userData.pwd == reqData.password) {

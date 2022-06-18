@@ -35,8 +35,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 app.use('/', indexRouter);
 //user路径下的所有请求到派发到userRouter中处理(一级路径+子路径)
-app.use('/login', loginRouter);
-app.use('/staff', userRouter);
+app.use('/', loginRouter);
+app.use('/', userRouter);
 
 
 //  捕捉404错误 catch 404 and forward to error handler

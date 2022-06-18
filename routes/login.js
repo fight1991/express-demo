@@ -3,6 +3,10 @@ var router = express.Router();
 const adminController = require('../controllers/admin');
 
 // 登录
-router.post('/login', adminController.login);
+try {
+  router.post('/login', adminController.login);
+} catch (error) {
+  console.log(error)
+}
 
 module.exports = router;
