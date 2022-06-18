@@ -2,6 +2,7 @@
 const createError = require('http-errors');
 const express = require('express');
 const cors = require('cors');
+
 const path = require('path');
 const cookieParser = require('cookie-parser');
 // const logger = require('morgan'); // 修改变量名
@@ -30,7 +31,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// 处理跨域问题
 app.use(cors());
 app.use('/', indexRouter);
 //user路径下的所有请求到派发到userRouter中处理(一级路径+子路径)
