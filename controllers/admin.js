@@ -4,8 +4,7 @@ const Admin = require('../models/admin_table.js');
 const adminController = {
   login: async function(req,res,next){
     try{
-      console.log(req.body);
-      let { account, password } = req.body;
+      let { account, password } = req.body.data;
       console.log(account)
       if (!account || !password) {
         res.json({
@@ -13,10 +12,9 @@ const adminController = {
           message: "请输入用户名或密码",
           data: null
         })
+        return;
       }
       let userData = await Admin.getUserInfo(account, password);
-      console.log('------------------')
-      console.log(userData)
       if (userData && userData[0]) {
         res.json({
           code: '0000',
@@ -30,6 +28,7 @@ const adminController = {
           data: null
         })
       }
+      return;
       
     }catch(e){
       res.json({ code: '0001', message: "操作失败", data: e })

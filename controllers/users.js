@@ -16,9 +16,16 @@ const usersController = {
   },
   queryUsersBasicInfo: async function (req, res, next) {
     try {
-      let sNo = req.body.account;
+      let sNo = req.body.data.account;
+      if (!sNo) {
+        res.json({
+          code: '0001',
+          message: "参数错误",
+          data: null
+        })
+        return;
+      }
       let data = await Users.getUserBasicInfo(sNo);
-      console.log(data)
       if (data && data[0]) {
         res.json({
           code: '0000',
@@ -40,13 +47,20 @@ const usersController = {
   },
   queryUsersEducationInfo: async function (req, res, next) {
     try {
-      let sNo = req.body.account
-      console.log(sNo)
+      let sNo = req.body.data.account
+      if (!sNo) {
+        res.json({
+          code: '0001',
+          message: "参数错误",
+          data: null
+        })
+        return;
+      }
       let data = await Users.getUserEducationInfo(sNo)
       res.json({
         code: '0000',
         message: "操作成功",
-        data: data
+        data: data[0]
       })
     } catch (e) {
       res.json({ code: '0001', message: "操作失败", data: e })
@@ -55,19 +69,20 @@ const usersController = {
   // 部门+职称
   queryUsersDetail: async function (req, res, next) {
     try {
-      let sNo = req.body.account
+      let sNo = req.body.data.account
       if (!sNo) {
         res.json({
           code: '0001',
           message: "参数错误",
           data: null
         })
+        return;
       }
       let data = await Users.getUserDetail(sNo)
       res.json({
         code: '0000',
         message: "操作成功",
-        data: data
+        data: data[0]
       })
     } catch (e) {
       res.json({ code: '0001', message: "操作失败", data: e })
