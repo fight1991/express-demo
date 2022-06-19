@@ -36,7 +36,7 @@ app.use(cors());
 app.use('/', indexRouter);
 //user路径下的所有请求到派发到userRouter中处理(一级路径+子路径)
 app.use('/', loginRouter);
-app.use('/', userRouter);
+app.use('/staff', userRouter);
 
 
 //  捕捉404错误 catch 404 and forward to error handler
