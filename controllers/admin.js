@@ -1,4 +1,3 @@
-// 引用用户模版数据
 const Admin = require('../models/admin_table.js');
 
 const adminController = {
